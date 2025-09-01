@@ -1,35 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Alunos</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Alunos</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Gerenciamento de Alunos</h1>
-    </header>
+  <h1>Sistema de Alunos</h1>
 
-    <main>
-        <section class="form-container">
-            <h2>Adicionar Novo Aluno</h2>
-            <form id="add-form">
-                <input type="text" id="matricula" placeholder="Matrícula" required>
-                <input type="text" id="nome" placeholder="Nome" required>
-                <input type="text" id="cpf" placeholder="CPF">
-                <input type="text" id="telefone" placeholder="Telefone">
-                <input type="email" id="email" placeholder="Email">
-                <button type="submit">Adicionar Aluno</button>
-            </form>
-        </section>
+  <section id="form-section">
+    <h2>Cadastrar Aluno</h2>
+    <form id="alunoForm">
+      <input type="text" id="matricula" placeholder="Matrícula" required>
+      <input type="text" id="nome" placeholder="Nome" required>
+      <input type="text" id="cpf" placeholder="CPF">
+      <input type="text" id="telefone" placeholder="Telefone">
+      <input type="email" id="email" placeholder="Email">
+      <button type="submit">Adicionar</button>
+    </form>
+  </section>
 
-        <section class="list-container">
-            <h2>Lista de Alunos</h2>
-            <ul id="student-list">
-                </ul>
-        </section>
-    </main>
-    <script src="script.js"></script>
+  <section id="list-section">
+    <h2>Lista de Alunos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Matrícula</th>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="alunosTable">
+      </tbody>
+    </table>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>

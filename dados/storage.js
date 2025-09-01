@@ -1,6 +1,6 @@
 
 var dados = []
-const localString = "DB"
+//const localString = "DB"
 
 export const getDados = async (req, res) => {
     res.json(dados)
@@ -28,15 +28,15 @@ export const addDados = (req, res ) => {
       
     dados.push(aluno)
 
-    localStorage.setItem(localString, JSON.stringify(dados));
+    //ocalStorage.setItem(localString, JSON.stringify(dados));
     res.status(201).json(aluno);
 }
 
 export const delDados = (req, res) => {
-    const matriculaProcurada = req.query.matricula;
-    dados = dados.filter(aluno => aluno.matricula != matriculaProcurada);
+    const matriculaProcurada = req.params.matricula;
+    dados = dados.filter(aluno => aluno.matricula !== matriculaProcurada);
 
-    localStorage.setItem(localString, JSON.stringify(dados));
+   // localStorage.setItem(localString, JSON.stringify(dados));
     res.send("Sucessuful execution")
 }
 
@@ -52,7 +52,7 @@ export const editDados = (req, res) => {
     }
   
    
-    let studentToUpdate = students[studentIndex];
+    let studentToUpdate = dados[studentIndex];
   
    
     Object.keys(updates).forEach(key => {
@@ -64,7 +64,7 @@ export const editDados = (req, res) => {
   
    
     dados[studentIndex] = studentToUpdate;
-    localStorage.setItem(localString, JSON.stringify(dados));
+    //localStorage.setItem(localString, JSON.stringify(dados));
    
     res.status(200).json(studentToUpdate);
 }
