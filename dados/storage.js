@@ -1,10 +1,31 @@
 
-var dados = []
+import fs from 'fs';
+import path from 'path';
+
+const FILE_PATH = path.resolve('./dados/dados.json');
+
+function loadDados() {
+  try {
+      const fileData = fs.readFileSync(FILE_PATH, 'utf-8');
+      return JSON.parse(fileData);
+  } catch (error) {
+      return []; // Se o arquivo não existir ou estiver vazio
+  }
+}
+
+var dados = loadDados()
 //const localString = "DB"
+
+
+function saveDados(dados) {
+  fs.writeFileSync(FILE_PATH, JSON.stringify(dados, null, 2), 'utf-8');
+}
 
 export const getDados = async (req, res) => {
     res.json(dados)
 }
+
+
 
 export const addDados = (req, res ) => {
     const matricula = req.query.matricula;
@@ -29,6 +50,7 @@ export const addDados = (req, res ) => {
     dados.push(aluno)
 
     //ocalStorage.setItem(localString, JSON.stringify(dados));
+    saveDados(dados)
     res.status(201).json(aluno);
 }
 
@@ -37,6 +59,7 @@ export const delDados = (req, res) => {
     dados = dados.filter(aluno => aluno.matricula !== matriculaProcurada);
 
    // localStorage.setItem(localString, JSON.stringify(dados));
+   saveDados(dados)
     res.send("Sucessuful execution")
 }
 
@@ -65,6 +88,6 @@ export const editDados = (req, res) => {
    
     dados[studentIndex] = studentToUpdate;
     //localStorage.setItem(localString, JSON.stringify(dados));
-   
+    saveDados(dados)
     res.status(200).json(studentToUpdate);
 }
