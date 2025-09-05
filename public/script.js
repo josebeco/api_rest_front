@@ -39,7 +39,7 @@ async function carregarAlunos() {
       <td>${aluno.email || ""}</td>
       <td>
         <button onclick="editarAluno('${aluno.matricula}', '${aluno.nome}', '${aluno.cpf || ""}', '${aluno.telefone || ""}', '${aluno.email || ""}')">Editar</button>
-        <button onclick="deletarAluno('${aluno.matricula}')">Excluir</button>
+        <button data-action="delete" onclick="deletarAluno('${aluno.matricula}')">Excluir</button>
       </td>
     `;
 
